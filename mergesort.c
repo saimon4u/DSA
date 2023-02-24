@@ -34,15 +34,28 @@ void mergesort(int *arr,int *temp,int left,int right){
         merge(arr,temp,left,mid+1,right);
     }
 }
+void bublesort(int *arr,int n){
+    int i,j,temp;
+    for(i=0; i<n; i++){
+        for(j=i; j<n; j++){
+            if(arr[i]<arr[j]){
+                temp=arr[i];
+                arr[i]=arr[j];
+                arr[j]=temp;
+            }
+        }
+    }
+}
 int main(){
     double itime,ftime;
-    itime=(double)clock();
-    int n=10000;
+    int n=100000;
     int arr[n];
     int temp[n];
     for(int j=0; j<n; j++){
-        arr[j]=rand()%50000;
+        arr[j]=rand();
     }
+    //bublesort(arr,n);
+    itime=(double)clock();
     mergesort(arr,temp,0,n-1);
     for(int i=0; i<n; i++){
         printf("%d\t",arr[i]);
